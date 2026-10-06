@@ -4,14 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>For You 💙</title>
+    <title>Access Granted 🧸💙</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #dff3ff, #b9e3ff, #d9d4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #173b63;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 22px;
+            letter-spacing: 12px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.78);
+            border-radius: 30px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(50, 100, 150, 0.2);
+        }
+
+        .teddy {
+            font-size: 90px;
+            margin-bottom: 10px;
+            animation: teddy 2s ease-in-out infinite;
+        }
+
+        @keyframes teddy {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .granted {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .message {
+            font-size: 19px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .heart {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .continue {
+            border: none;
+            padding: 14px 28px;
+            border-radius: 16px;
+            background: #2878c8;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(40, 120, 200, 0.3);
+        }
+
+        .continue:active {
+            transform: scale(0.96);
+        }
+
+        .bottom {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>🎂 Welcome! 💙</h1>
+    <div class="stars">
+        ✨ 💙 ✨ 💙 ✨
+    </div>
 
-    <p>Your birthday surprise starts here...</p>
+    <div class="container">
+
+        <div class="teddy">
+            🧸
+        </div>
+
+        <div class="granted">
+            Access Granted! 💙
+        </div>
+
+        <div class="message">
+            Teddy checked the secret word... 🧸
+            <br><br>
+            And yes...
+            <br>
+            <strong>you are allowed in. 😌💙</strong>
+        </div>
+
+        <div class="heart">
+            💙 ✨ 💙
+        </div>
+
+        <button class="continue" onclick="continueToNext()">
+            Continue 🧸
+        </button>
+
+    </div>
+
+    <div class="bottom">
+        🧸 💙 🧸
+    </div>
+
+    <script>
+        function continueToNext() {
+            alert("The next surprise is waiting for you! 💙🧸");
+        }
+    </script>
 
 </body>
 </html>
