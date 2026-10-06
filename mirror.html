@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tap the Mirror ✨</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+    }
+
+    body {
+        background: #eef8ff;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow-x: hidden;
+    }
+
+    .phone-page {
+        position: relative;
+        width: 100%;
+        max-width: 430px;
+        min-height: 100vh;
+        overflow: hidden;
+        background: #eef8ff;
+    }
+
+    .page-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Invisible tap area over the mirror */
+    .mirror-button {
+        position: absolute;
+        left: 27%;
+        top: 25%;
+        width: 46%;
+        height: 55%;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .mirror-button:focus {
+        outline: none;
+    }
+
+    /* Magical shimmer */
+    .magic {
+        position: fixed;
+        inset: 0;
+        background: rgba(210, 235, 255, 0.35);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 20;
+        transition: opacity 0.4s ease;
+    }
+
+    .magic.active {
+        opacity: 1;
+    }
+
+    .shimmer {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba(255,255,255,0.9) 0%,
+            rgba(190,225,255,0.45) 35%,
+            transparent 70%
+        );
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0;
+    }
+
+    .magic.active .shimmer {
+        animation: shimmer 1.4s ease-out forwards;
+    }
+
+    @keyframes shimmer {
+        0% {
+            transform: translate(-50%, -50%) scale(0.3);
+            opacity: 0;
+        }
+
+        35% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate(-50%, -50%) scale(2.2);
+            opacity: 0;
+        }
+    }
+
+    /* Message revealed after tapping */
+    .message {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.85);
+        width: 85%;
+        text-align: center;
+        color: #2856a6;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 30;
+        font-family: Georgia, serif;
+    }
+
+    .message .first-line {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 14px;
+    }
+
+    .message .second-line {
+        font-size: 21px;
+        line-height: 1.45;
+    }
+
+    .magic.active + .message {
+        animation: messageAppear 1.2s ease forwards;
+        animation-delay: 0.8s;
+    }
+
+    @keyframes messageAppear {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.85);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    @media (max-width: 599px) {
+        .phone-page {
+            width: 100%;
+            max-width: 430px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="phone-page">
+
+    <img
+        src="mirror.png"
+        class="page-image"
+        alt="Tap the mirror"
+    >
+
+    <button
+        class="mirror-button"
+        onclick="tapMirror()"
+        aria-label="Tap the mirror">
+    </button>
+
+</div>
+
+<div class="magic">
+    <div class="shimmer"></div>
+</div>
+
+<div class="message">
+    <div class="first-line">
+        Oh there you are! 🥹
+    </div>
+
+    <div class="second-line">
+        I was looking for the birthday star. ⭐
+    </div>
+</div>
+
+<script>
+
+function tapMirror() {
+
+    const button = document.querySelector(".mirror-button");
+    const magic = document.querySelector(".magic");
+
+    button.disabled = true;
+
+    // Knock knock
+    if (navigator.vibrate) {
+        navigator.vibrate([80, 60, 80]);
+    }
+
+    // Start magical shimmer
+    setTimeout(() => {
+        magic.classList.add("active");
+    }, 250);
+
+}
+
+</script>
+
+</body>
+</html>
