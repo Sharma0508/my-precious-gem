@@ -1,536 +1,560 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Just For You 💙</title>
+  <title>A Little Secret 💙</title>
 
-<style>
+  <style>
     * {
-        box-sizing: border-box;
+      box-sizing: border-box;
     }
 
     html,
     body {
-        margin: 0;
-        width: 100%;
-        min-height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
     }
 
     body {
-        min-height: 100vh;
-        overflow: hidden;
+      background: #dceeff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
 
-        font-family: "Trebuchet MS", Arial, sans-serif;
-        color: white;
+    .phone-page {
+      position: relative;
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #eef8ff;
+    }
 
-        background: linear-gradient(
-            180deg,
-            #69b7ed 0%,
-            #8ccdf2 50%,
-            #b9e4fa 100%
+    /* Main artwork */
+    .page-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* REAL password input */
+    .password-input {
+      position: absolute;
+
+      left: 15%;
+      top: 52.5%;
+
+      width: 70%;
+      height: 7.8%;
+
+      border: none;
+      outline: none;
+      background: transparent;
+
+      padding: 0 65px;
+
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      color: #477cc7;
+
+      z-index: 10;
+    }
+
+    .password-input::placeholder {
+      color: transparent;
+    }
+
+    /* Invisible Unlock button */
+    .unlock-button {
+      position: absolute;
+
+      left: 26%;
+      top: 64.2%;
+
+      width: 48%;
+      height: 8.5%;
+
+      border: none;
+      background: transparent;
+
+      cursor: pointer;
+      padding: 0;
+
+      z-index: 11;
+    }
+
+    .unlock-button:active {
+      transform: scale(0.96);
+    }
+
+    /* Invisible eye button */
+    .eye-button {
+      position: absolute;
+
+      right: 18%;
+      top: 53.2%;
+
+      width: 12%;
+      height: 6%;
+
+      border: none;
+      background: transparent;
+
+      cursor: pointer;
+
+      z-index: 12;
+    }
+
+    /* =========================
+       MAGIC EFFECT
+       ========================= */
+
+    .magic {
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: 0;
+
+      z-index: 50;
+    }
+
+    /* Golden glow */
+    .glow {
+      position: absolute;
+
+      left: 50%;
+      top: 31%;
+
+      width: 45%;
+      aspect-ratio: 1;
+
+      transform: translate(-50%, -50%) scale(0);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255, 250, 200, 0.95) 0%,
+          rgba(255, 231, 130, 0.55) 30%,
+          rgba(255, 255, 255, 0) 70%
         );
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        position: relative;
-
-        transition: opacity 1.2s ease;
+      filter: blur(8px);
     }
 
-    body.unlocking {
-        opacity: 0;
-    }
-
-    /* STARS */
-
-    .stars {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
-
+    /* Stars */
     .star {
-        position: absolute;
-        color: white;
-        font-size: 12px;
-        opacity: 0.7;
-        animation: twinkle 3s ease-in-out infinite;
+      position: absolute;
+
+      color: white;
+
+      font-size: 20px;
+
+      opacity: 0;
+
+      text-shadow:
+        0 0 8px #ffffff,
+        0 0 16px #ffe98a;
     }
 
-    .star:nth-child(1) {
-        top: 12%;
-        left: 12%;
+    .star1 {
+      left: 25%;
+      top: 28%;
     }
 
-    .star:nth-child(2) {
-        top: 20%;
-        left: 82%;
-        font-size: 9px;
-        animation-delay: 1s;
+    .star2 {
+      left: 68%;
+      top: 27%;
     }
 
-    .star:nth-child(3) {
-        top: 34%;
-        left: 7%;
-        font-size: 8px;
-        animation-delay: 2s;
+    .star3 {
+      left: 30%;
+      top: 38%;
     }
 
-    .star:nth-child(4) {
-        top: 14%;
-        left: 62%;
-        font-size: 7px;
-        animation-delay: 1.5s;
+    .star4 {
+      left: 70%;
+      top: 39%;
     }
 
-    .star:nth-child(5) {
-        top: 48%;
-        left: 91%;
-        font-size: 10px;
-        animation-delay: 0.5s;
+    .star5 {
+      left: 50%;
+      top: 22%;
     }
 
-    .star:nth-child(6) {
-        top: 68%;
-        left: 10%;
-        font-size: 9px;
-        animation-delay: 2.2s;
+    /* Key */
+    .key {
+      position: absolute;
+
+      left: 50%;
+      top: 38%;
+
+      font-size: 55px;
+
+      opacity: 0;
+
+      transform:
+        translate(-50%, -50%)
+        rotate(-25deg)
+        scale(0.5);
+
+      filter:
+        drop-shadow(0 0 8px rgba(255, 232, 120, 0.9));
+
+      z-index: 60;
     }
 
-    .star:nth-child(7) {
-        top: 73%;
-        left: 86%;
-        font-size: 8px;
-        animation-delay: 1.2s;
+    /* Screen flash */
+    .flash {
+      position: absolute;
+
+      inset: 0;
+
+      background: white;
+
+      opacity: 0;
+
+      z-index: 70;
     }
 
-    .star:nth-child(8) {
-        top: 82%;
-        left: 25%;
-        font-size: 7px;
-        animation-delay: 0.8s;
+    /* =========================
+       MAGIC ANIMATION
+       ========================= */
+
+    .magic.active {
+      opacity: 1;
     }
 
-    @keyframes twinkle {
-        0%, 100% {
-            opacity: 0.3;
-            transform: scale(0.8);
-        }
-
-        50% {
-            opacity: 1;
-            transform: scale(1.3);
-        }
+    .magic.active .glow {
+      animation: glowIn 1.2s ease forwards;
     }
 
-    /* CLOUDS */
-
-    .cloud {
-        position: absolute;
-        width: 150px;
-        height: 45px;
-
-        background: rgba(255, 255, 255, 0.72);
-
-        border-radius: 100px;
-
-        opacity: 0.8;
-
-        animation: floatCloud 28s linear infinite;
+    .magic.active .key {
+      animation: keyMove 2.4s ease-in-out forwards;
     }
 
-    .cloud::before,
-    .cloud::after {
-        content: "";
-        position: absolute;
-        background: inherit;
-        border-radius: 50%;
+    .magic.active .star {
+      animation: starBurst 2.5s ease-out forwards;
     }
 
-    .cloud::before {
-        width: 65px;
-        height: 65px;
-        left: 22px;
-        bottom: 15px;
+    .magic.active .star1 {
+      animation-delay: 1.5s;
     }
 
-    .cloud::after {
-        width: 82px;
-        height: 82px;
-        right: 20px;
-        bottom: 10px;
+    .magic.active .star2 {
+      animation-delay: 1.7s;
     }
 
-    .cloud.one {
-        top: 12%;
-        left: -200px;
-        transform: scale(0.9);
-        animation-duration: 28s;
+    .magic.active .star3 {
+      animation-delay: 1.4s;
     }
 
-    .cloud.two {
-        top: 72%;
-        left: -220px;
-        transform: scale(0.65);
-        opacity: 0.55;
-        animation-duration: 35s;
-        animation-delay: 7s;
+    .magic.active .star4 {
+      animation-delay: 1.8s;
     }
 
-    .cloud.three {
-        top: 25%;
-        left: -220px;
-        transform: scale(0.45);
-        opacity: 0.45;
-        animation-duration: 40s;
-        animation-delay: 13s;
+    .magic.active .star5 {
+      animation-delay: 1.6s;
     }
 
-    @keyframes floatCloud {
-        from {
-            left: -220px;
-        }
-
-        to {
-            left: calc(100% + 220px);
-        }
+    .magic.active .flash {
+      animation: flashScreen 0.7s ease-in 2.8s forwards;
     }
 
-    /* MAIN CONTENT */
+    @keyframes glowIn {
 
-    .page {
-        position: relative;
-        z-index: 5;
-
-        width: min(90%, 520px);
-
-        padding: 20px;
-
-        text-align: center;
-
-        transition:
-            transform 0.8s ease,
-            opacity 0.8s ease;
-    }
-
-    body.unlocking .page {
-        transform: scale(1.08);
+      0% {
+        transform:
+          translate(-50%, -50%)
+          scale(0);
         opacity: 0;
+      }
+
+      60% {
+        transform:
+          translate(-50%, -50%)
+          scale(1.4);
+        opacity: 1;
+      }
+
+      100% {
+        transform:
+          translate(-50%, -50%)
+          scale(1.1);
+        opacity: 0.9;
+      }
     }
 
-    .heart {
-        font-size: 42px;
-        margin-bottom: 18px;
+    @keyframes keyMove {
 
-        animation: gentleFloat 3s ease-in-out infinite;
+      0% {
+        left: 50%;
+        top: 38%;
+        opacity: 0;
+        transform:
+          translate(-50%, -50%)
+          rotate(-25deg)
+          scale(0.5);
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      65% {
+        left: 50%;
+        top: 31%;
+        transform:
+          translate(-50%, -50%)
+          rotate(5deg)
+          scale(1);
+      }
+
+      78% {
+        left: 50%;
+        top: 31%;
+        transform:
+          translate(-50%, -50%)
+          rotate(95deg)
+          scale(1);
+      }
+
+      88% {
+        left: 50%;
+        top: 31%;
+        transform:
+          translate(-50%, -50%)
+          rotate(70deg)
+          scale(1.05);
+      }
+
+      100% {
+        left: 50%;
+        top: 31%;
+        opacity: 0;
+        transform:
+          translate(-50%, -50%)
+          rotate(70deg)
+          scale(0.8);
+      }
     }
 
-    @keyframes gentleFloat {
-        0%, 100% {
-            transform: translateY(0);
-        }
+    @keyframes starBurst {
 
-        50% {
-            transform: translateY(-7px);
-        }
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+
+      30% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
+      100% {
+        opacity: 0;
+        transform:
+          translate(
+            calc((50vw - 50%) * 0.1),
+            -45px
+          )
+          scale(1.8);
+      }
     }
 
-    .heading {
-        font-size: clamp(28px, 5vw, 42px);
+    @keyframes flashScreen {
 
-        font-weight: bold;
+      0% {
+        opacity: 0;
+      }
 
-        line-height: 1.2;
+      50% {
+        opacity: 0.9;
+      }
 
-        text-shadow:
-            0 3px 12px rgba(35, 92, 140, 0.25);
-
-        margin-bottom: 18px;
+      100% {
+        opacity: 0;
+      }
     }
 
-    .message {
-        font-size: clamp(17px, 3vw, 21px);
+    @media (min-width: 600px) {
 
-        line-height: 1.5;
+      body {
+        padding: 25px 0;
+      }
 
-        color: rgba(255, 255, 255, 0.95);
+      .phone-page {
+        border-radius: 20px;
 
-        margin-bottom: 30px;
+        box-shadow:
+          0 10px 40px
+          rgba(40, 90, 150, 0.25);
+      }
     }
 
-    /* PASSWORD */
+    @media (max-width: 599px) {
 
-    .password-box {
-        width: min(100%, 380px);
-        margin: 0 auto;
-    }
+      body {
+        background: #eef8ff;
+        padding: 0;
+      }
 
-    .password {
+      .phone-page {
         width: 100%;
-        height: 58px;
-
-        border: 2px solid rgba(255, 255, 255, 0.75);
-
-        border-radius: 18px;
-
-        background: rgba(255, 255, 255, 0.25);
-
-        backdrop-filter: blur(8px);
-
-        padding: 0 18px;
-
-        font-size: 18px;
-
-        font-family: inherit;
-
-        color: white;
-
-        outline: none;
-
-        text-align: center;
-
-        transition: 0.25s;
+        max-width: 430px;
+        border-radius: 0;
+        box-shadow: none;
+      }
     }
 
-    .password::placeholder {
-        color: rgba(255, 255, 255, 0.85);
-    }
-
-    .password:focus {
-        background: rgba(255, 255, 255, 0.35);
-
-        border-color: white;
-
-        box-shadow:
-            0 0 20px rgba(255, 255, 255, 0.25);
-    }
-
-    .unlock {
-        margin-top: 16px;
-
-        min-width: 150px;
-        height: 52px;
-
-        border: none;
-
-        border-radius: 18px;
-
-        background: rgba(255, 255, 255, 0.92);
-
-        color: #397fb1;
-
-        font-family: inherit;
-
-        font-size: 18px;
-
-        font-weight: bold;
-
-        cursor: pointer;
-
-        box-shadow:
-            0 8px 20px rgba(38, 103, 151, 0.2);
-
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease;
-    }
-
-    .unlock:hover {
-        transform: translateY(-2px);
-
-        box-shadow:
-            0 12px 25px rgba(38, 103, 151, 0.25);
-    }
-
-    .unlock:active {
-        transform: scale(0.96);
-    }
-
-    /* ERROR */
-
-    .error {
-        display: none;
-
-        margin-top: 15px;
-
-        color: white;
-
-        font-size: 15px;
-
-        animation: shake 0.3s ease;
-    }
-
-    @keyframes shake {
-        0%, 100% {
-            transform: translateX(0);
-        }
-
-        25% {
-            transform: translateX(-5px);
-        }
-
-        75% {
-            transform: translateX(5px);
-        }
-    }
-
-    /* PHONE */
-
-    @media (max-width: 500px) {
-
-        .page {
-            width: 92%;
-            padding: 15px;
-        }
-
-        .heart {
-            font-size: 35px;
-        }
-
-        .heading {
-            font-size: 29px;
-        }
-
-        .message {
-            font-size: 17px;
-            margin-bottom: 25px;
-        }
-
-        .password {
-            height: 55px;
-            font-size: 17px;
-        }
-
-        .unlock {
-            width: 145px;
-            height: 50px;
-            font-size: 17px;
-        }
-    }
-</style>
-```
-
+  </style>
 </head>
 
 <body>
 
-```
-<div class="stars">
-    <span class="star">✦</span>
-    <span class="star">✧</span>
-    <span class="star">✦</span>
-    <span class="star">✧</span>
-    <span class="star">✦</span>
-    <span class="star">✧</span>
-    <span class="star">✦</span>
-    <span class="star">✧</span>
-</div>
+  <div class="phone-page">
 
-<div class="cloud one"></div>
-<div class="cloud two"></div>
-<div class="cloud three"></div>
+    <!-- YOUR PASSWORD PAGE IMAGE -->
+    <img
+      class="page-image"
+      src="password-door.png"
+      alt="A little secret"
+    >
 
-<main class="page">
+    <!-- REAL PASSWORD BOX -->
+    <input
+      id="password"
+      class="password-input"
+      type="password"
+      autocomplete="off"
+      aria-label="Enter password"
+    >
 
-    <div class="heart">
-        💙
-    </div>
+    <!-- SHOW / HIDE PASSWORD -->
+    <button
+      class="eye-button"
+      onclick="togglePassword()"
+      aria-label="Show password"
+    ></button>
 
-    <div class="heading">
-        This little corner of the internet
-        is just for you.
-    </div>
+    <!-- UNLOCK -->
+    <button
+      class="unlock-button"
+      onclick="checkPassword()"
+      aria-label="Unlock"
+    ></button>
 
-    <div class="message">
-        Hint: The name you gave me might just unlock it ✨
-    </div>
 
-    <div class="password-box">
+    <!-- MAGIC EFFECTS -->
+    <div id="magic" class="magic">
 
-        <input
-            type="password"
-            id="password"
-            class="password"
-            placeholder="Enter the secret word..."
-            autocomplete="off"
-            onkeydown="handleEnter(event)"
-        >
+      <div class="glow"></div>
 
-        <button
-            class="unlock"
-            onclick="checkPassword()"
-        >
-            Unlock 💙
-        </button>
+      <div class="key">🔑</div>
 
-        <div
-            id="error"
-            class="error"
-        >
-            Hmm... that's not quite it.
-            Try again 💙
-        </div>
+      <div class="star star1">✦</div>
+      <div class="star star2">✧</div>
+      <div class="star star3">✦</div>
+      <div class="star star4">✧</div>
+      <div class="star star5">✦</div>
+
+      <div class="flash"></div>
 
     </div>
 
-</main>
+  </div>
 
-<script>
+
+  <script>
 
     function checkPassword() {
 
-        const password =
-            document
-                .getElementById("password")
-                .value
-                .trim()
-                .toLowerCase();
+      const enteredPassword =
+        document.getElementById("password").value;
 
-        if (password === "bandri") {
+      /*
+        PUT YOUR EXISTING PASSWORD HERE.
 
-            document
-                .body
-                .classList
-                .add("unlocking");
+        Do NOT send your password to me.
+      */
 
-            setTimeout(function () {
+      const correctPassword = "bandri";
 
-                window.location.href =
-                    "birthday.html";
 
-            }, 1200);
+      if (enteredPassword === correctPassword) {
 
-        } else {
+        // Hide the controls
+        document.getElementById("password").style.display = "none";
+        document.querySelector(".unlock-button").style.display = "none";
+        document.querySelector(".eye-button").style.display = "none";
 
-            const error =
-                document
-                    .getElementById("error");
+        // Start magic
+        document
+          .getElementById("magic")
+          .classList.add("active");
 
-            error.style.display = "block";
+        // Go to Access Granted page
+        setTimeout(function() {
 
-            setTimeout(function () {
+          window.location.href = "birthday.html";
 
-                error.style.display = "none";
+        }, 3500);
 
-            }, 2500);
-        }
+      } else {
+
+        alert("Hmm... that's not quite it 💙");
+
+      }
+
     }
 
-    function handleEnter(event) {
+
+    function togglePassword() {
+
+      const password =
+        document.getElementById("password");
+
+      if (password.type === "password") {
+
+        password.type = "text";
+
+      } else {
+
+        password.type = "password";
+
+      }
+
+    }
+
+
+    // Pressing Enter also unlocks
+
+    document
+      .getElementById("password")
+      .addEventListener("keydown", function(event) {
 
         if (event.key === "Enter") {
-            checkPassword();
-        }
-    }
 
-</script>
-```
+          checkPassword();
+
+        }
+
+      });
+
+  </script>
 
 </body>
 </html>
