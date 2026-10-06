@@ -38,7 +38,10 @@
       background: #eef8ff;
     }
 
-    /* THE PASSWORD PAGE IMAGE */
+    /* =========================
+       PASSWORD PAGE IMAGE
+       ========================= */
+
     .page-image {
       display: block;
       width: 100%;
@@ -47,14 +50,18 @@
       padding: 0;
     }
 
-    /* PASSWORD INPUT */
+
+    /* =========================
+       PASSWORD INPUT
+       ========================= */
+
     .password-input {
       position: absolute;
 
       left: 16%;
-      top: 62.5%;
+      top: 59.5%;
       width: 68%;
-      height: 8.5%;
+      height: 6.2%;
 
       border: none;
       outline: none;
@@ -64,9 +71,11 @@
 
       font-size: 17px;
       font-family: Arial, sans-serif;
+
       color: #477cc7;
 
       z-index: 100;
+
       cursor: text;
     }
 
@@ -74,14 +83,18 @@
       color: transparent;
     }
 
-    /* UNLOCK BUTTON */
+
+    /* =========================
+       UNLOCK BUTTON
+       ========================= */
+
     .unlock-button {
       position: absolute;
 
       left: 25%;
-      top: 74.8%;
+      top: 71.5%;
       width: 50%;
-      height: 9%;
+      height: 8%;
 
       border: none;
       outline: none;
@@ -97,14 +110,18 @@
       transform: scale(0.96);
     }
 
-    /* EYE BUTTON */
+
+    /* =========================
+       EYE BUTTON
+       ========================= */
+
     .eye-button {
       position: absolute;
 
       right: 17%;
-      top: 63%;
+      top: 59.8%;
       width: 12%;
-      height: 7%;
+      height: 6.5%;
 
       border: none;
       outline: none;
@@ -118,7 +135,7 @@
 
 
     /* =========================
-       MAGIC UNLOCK ANIMATION
+       MAGIC ANIMATION
        ========================= */
 
     .magic {
@@ -128,8 +145,12 @@
       pointer-events: none;
 
       opacity: 0;
+
       z-index: 200;
     }
+
+
+    /* GLOW */
 
     .glow {
       position: absolute;
@@ -140,7 +161,9 @@
       width: 45%;
       aspect-ratio: 1;
 
-      transform: translate(-50%, -50%) scale(0);
+      transform:
+        translate(-50%, -50%)
+        scale(0);
 
       border-radius: 50%;
 
@@ -155,10 +178,14 @@
       filter: blur(8px);
     }
 
+
+    /* STARS */
+
     .star {
       position: absolute;
 
       color: white;
+
       font-size: 20px;
 
       opacity: 0;
@@ -193,6 +220,9 @@
       top: 22%;
     }
 
+
+    /* KEY */
+
     .key {
       position: absolute;
 
@@ -216,21 +246,30 @@
       z-index: 210;
     }
 
+
+    /* FLASH */
+
     .flash {
       position: absolute;
+
       inset: 0;
 
       background: white;
+
       opacity: 0;
 
       z-index: 220;
     }
 
 
-    /* ANIMATION STARTS */
+    /* =========================
+       START ANIMATION
+       ========================= */
+
     .magic.active {
       opacity: 1;
     }
+
 
     .magic.active .glow {
       animation:
@@ -240,6 +279,7 @@
         forwards;
     }
 
+
     .magic.active .key {
       animation:
         keyMove
@@ -248,6 +288,7 @@
         forwards;
     }
 
+
     .magic.active .star {
       animation:
         starBurst
@@ -255,6 +296,7 @@
         ease-out
         forwards;
     }
+
 
     .magic.active .star1 {
       animation-delay: 1.5s;
@@ -276,6 +318,7 @@
       animation-delay: 1.6s;
     }
 
+
     .magic.active .flash {
       animation:
         flashScreen
@@ -286,7 +329,10 @@
     }
 
 
-    /* GLOW */
+    /* =========================
+       GLOW ANIMATION
+       ========================= */
+
     @keyframes glowIn {
 
       0% {
@@ -315,7 +361,10 @@
     }
 
 
-    /* KEY MOVEMENT */
+    /* =========================
+       KEY ANIMATION
+       ========================= */
+
     @keyframes keyMove {
 
       0% {
@@ -378,7 +427,10 @@
     }
 
 
-    /* STARS */
+    /* =========================
+       STAR ANIMATION
+       ========================= */
+
     @keyframes starBurst {
 
       0% {
@@ -404,7 +456,10 @@
     }
 
 
-    /* WHITE FLASH */
+    /* =========================
+       FLASH ANIMATION
+       ========================= */
+
     @keyframes flashScreen {
 
       0% {
@@ -421,7 +476,10 @@
     }
 
 
-    /* DESKTOP */
+    /* =========================
+       DESKTOP
+       ========================= */
+
     @media (min-width: 600px) {
 
       body {
@@ -438,7 +496,10 @@
     }
 
 
-    /* PHONE */
+    /* =========================
+       PHONE
+       ========================= */
+
     @media (max-width: 599px) {
 
       body {
@@ -464,7 +525,11 @@
 
   <div class="phone-page">
 
-    <!-- PASSWORD PAGE IMAGE -->
+
+    <!-- =========================
+         PASSWORD IMAGE
+         ========================= -->
+
     <img
       class="page-image"
       src="password-door.png"
@@ -472,7 +537,10 @@
     >
 
 
-    <!-- PASSWORD INPUT -->
+    <!-- =========================
+         PASSWORD BOX
+         ========================= -->
+
     <input
       id="password"
       class="password-input"
@@ -482,7 +550,10 @@
     >
 
 
-    <!-- EYE BUTTON -->
+    <!-- =========================
+         EYE
+         ========================= -->
+
     <button
       class="eye-button"
       onclick="togglePassword()"
@@ -491,7 +562,10 @@
     ></button>
 
 
-    <!-- UNLOCK BUTTON -->
+    <!-- =========================
+         UNLOCK
+         ========================= -->
+
     <button
       class="unlock-button"
       onclick="checkPassword()"
@@ -500,7 +574,10 @@
     ></button>
 
 
-    <!-- MAGIC ANIMATION -->
+    <!-- =========================
+         MAGIC EFFECT
+         ========================= -->
+
     <div
       id="magic"
       class="magic"
@@ -542,7 +619,7 @@
   <script>
 
     /* =========================
-       PASSWORD CHECK
+       CHECK PASSWORD
        ========================= */
 
     function checkPassword() {
@@ -552,28 +629,34 @@
 
 
       /*
-        ==========================================
-        CHANGE ONLY THE TEXT BELOW
-        TO YOUR EXISTING PASSWORD.
-
-        DO NOT SEND YOUR PASSWORD TO ME.
-        ==========================================
-      */
+       * ==========================================
+       * CHANGE ONLY YOUR PASSWORD BELOW
+       *
+       * DO NOT SEND YOUR PASSWORD TO ME.
+       * ==========================================
+       */
 
       const correctPassword = "bandri";
 
 
       if (enteredPassword === correctPassword) {
 
-        /* Hide password controls */
+
+        /* Hide password */
 
         document
           .getElementById("password")
           .style.display = "none";
 
+
+        /* Hide unlock button */
+
         document
           .querySelector(".unlock-button")
           .style.display = "none";
+
+
+        /* Hide eye */
 
         document
           .querySelector(".eye-button")
@@ -588,7 +671,7 @@
           .add("active");
 
 
-        /* Go to next page */
+        /* Go to birthday page */
 
         setTimeout(function() {
 
@@ -636,7 +719,7 @@
 
 
     /* =========================
-       PRESS ENTER TO UNLOCK
+       ENTER KEY
        ========================= */
 
     document
