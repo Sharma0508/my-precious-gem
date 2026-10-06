@@ -38,7 +38,7 @@
       background: #eef8ff;
     }
 
-    /* Main artwork */
+    /* THE PASSWORD PAGE IMAGE */
     .page-image {
       display: block;
       width: 100%;
@@ -47,76 +47,78 @@
       padding: 0;
     }
 
-    /* REAL password input */
+    /* PASSWORD INPUT */
     .password-input {
       position: absolute;
 
-      left: 18%;
-      top: 64.5%;
-
-      width: 64%;
-      height: 5.5%;
+      left: 16%;
+      top: 62.5%;
+      width: 68%;
+      height: 8.5%;
 
       border: none;
       outline: none;
       background: transparent;
 
-      padding: 0 65px;
+      padding: 0 55px;
 
-      font-size: 18px;
+      font-size: 17px;
       font-family: Arial, sans-serif;
       color: #477cc7;
 
-      z-index: 10;
+      z-index: 100;
+      cursor: text;
     }
 
     .password-input::placeholder {
       color: transparent;
     }
 
-    /* Invisible Unlock button */
+    /* UNLOCK BUTTON */
     .unlock-button {
       position: absolute;
 
-      left: 26%;
-      top: 75.5%;
-
-      width: 48%;
-      height: 8.5%;
+      left: 25%;
+      top: 74.8%;
+      width: 50%;
+      height: 9%;
 
       border: none;
+      outline: none;
       background: transparent;
 
       cursor: pointer;
       padding: 0;
 
-      z-index: 11;
+      z-index: 101;
     }
 
     .unlock-button:active {
       transform: scale(0.96);
     }
 
-    /* Invisible eye button */
+    /* EYE BUTTON */
     .eye-button {
       position: absolute;
 
-      right: 18%;
-      top: 53.2%;
-
+      right: 17%;
+      top: 63%;
       width: 12%;
-      height: 6%;
+      height: 7%;
 
       border: none;
+      outline: none;
       background: transparent;
 
       cursor: pointer;
+      padding: 0;
 
-      z-index: 12;
+      z-index: 102;
     }
 
+
     /* =========================
-       MAGIC EFFECT
+       MAGIC UNLOCK ANIMATION
        ========================= */
 
     .magic {
@@ -126,11 +128,9 @@
       pointer-events: none;
 
       opacity: 0;
-
-      z-index: 50;
+      z-index: 200;
     }
 
-    /* Golden glow */
     .glow {
       position: absolute;
 
@@ -155,18 +155,16 @@
       filter: blur(8px);
     }
 
-    /* Stars */
     .star {
       position: absolute;
 
       color: white;
-
       font-size: 20px;
 
       opacity: 0;
 
       text-shadow:
-        0 0 8px #ffffff,
+        0 0 8px white,
         0 0 16px #ffe98a;
     }
 
@@ -195,7 +193,6 @@
       top: 22%;
     }
 
-    /* Key */
     .key {
       position: absolute;
 
@@ -212,42 +209,51 @@
         scale(0.5);
 
       filter:
-        drop-shadow(0 0 8px rgba(255, 232, 120, 0.9));
+        drop-shadow(
+          0 0 8px rgba(255, 232, 120, 0.9)
+        );
 
-      z-index: 60;
+      z-index: 210;
     }
 
-    /* Screen flash */
     .flash {
       position: absolute;
-
       inset: 0;
 
       background: white;
-
       opacity: 0;
 
-      z-index: 70;
+      z-index: 220;
     }
 
-    /* =========================
-       MAGIC ANIMATION
-       ========================= */
 
+    /* ANIMATION STARTS */
     .magic.active {
       opacity: 1;
     }
 
     .magic.active .glow {
-      animation: glowIn 1.2s ease forwards;
+      animation:
+        glowIn
+        1.2s
+        ease
+        forwards;
     }
 
     .magic.active .key {
-      animation: keyMove 2.4s ease-in-out forwards;
+      animation:
+        keyMove
+        2.4s
+        ease-in-out
+        forwards;
     }
 
     .magic.active .star {
-      animation: starBurst 2.5s ease-out forwards;
+      animation:
+        starBurst
+        2.5s
+        ease-out
+        forwards;
     }
 
     .magic.active .star1 {
@@ -271,15 +277,23 @@
     }
 
     .magic.active .flash {
-      animation: flashScreen 0.7s ease-in 2.8s forwards;
+      animation:
+        flashScreen
+        0.7s
+        ease-in
+        2.8s
+        forwards;
     }
 
+
+    /* GLOW */
     @keyframes glowIn {
 
       0% {
         transform:
           translate(-50%, -50%)
           scale(0);
+
         opacity: 0;
       }
 
@@ -287,6 +301,7 @@
         transform:
           translate(-50%, -50%)
           scale(1.4);
+
         opacity: 1;
       }
 
@@ -294,16 +309,21 @@
         transform:
           translate(-50%, -50%)
           scale(1.1);
+
         opacity: 0.9;
       }
     }
 
+
+    /* KEY MOVEMENT */
     @keyframes keyMove {
 
       0% {
         left: 50%;
         top: 38%;
+
         opacity: 0;
+
         transform:
           translate(-50%, -50%)
           rotate(-25deg)
@@ -317,6 +337,7 @@
       65% {
         left: 50%;
         top: 31%;
+
         transform:
           translate(-50%, -50%)
           rotate(5deg)
@@ -326,6 +347,7 @@
       78% {
         left: 50%;
         top: 31%;
+
         transform:
           translate(-50%, -50%)
           rotate(95deg)
@@ -335,6 +357,7 @@
       88% {
         left: 50%;
         top: 31%;
+
         transform:
           translate(-50%, -50%)
           rotate(70deg)
@@ -344,7 +367,9 @@
       100% {
         left: 50%;
         top: 31%;
+
         opacity: 0;
+
         transform:
           translate(-50%, -50%)
           rotate(70deg)
@@ -352,6 +377,8 @@
       }
     }
 
+
+    /* STARS */
     @keyframes starBurst {
 
       0% {
@@ -366,6 +393,7 @@
 
       100% {
         opacity: 0;
+
         transform:
           translate(
             calc((50vw - 50%) * 0.1),
@@ -375,6 +403,8 @@
       }
     }
 
+
+    /* WHITE FLASH */
     @keyframes flashScreen {
 
       0% {
@@ -390,6 +420,8 @@
       }
     }
 
+
+    /* DESKTOP */
     @media (min-width: 600px) {
 
       body {
@@ -405,6 +437,8 @@
       }
     }
 
+
+    /* PHONE */
     @media (max-width: 599px) {
 
       body {
@@ -415,7 +449,9 @@
       .phone-page {
         width: 100%;
         max-width: 430px;
+
         border-radius: 0;
+
         box-shadow: none;
       }
     }
@@ -423,18 +459,20 @@
   </style>
 </head>
 
+
 <body>
 
   <div class="phone-page">
 
-    <!-- YOUR PASSWORD PAGE IMAGE -->
+    <!-- PASSWORD PAGE IMAGE -->
     <img
       class="page-image"
       src="password-door.png"
       alt="A little secret"
     >
 
-    <!-- REAL PASSWORD BOX -->
+
+    <!-- PASSWORD INPUT -->
     <input
       id="password"
       class="password-input"
@@ -443,33 +481,56 @@
       aria-label="Enter password"
     >
 
-    <!-- SHOW / HIDE PASSWORD -->
+
+    <!-- EYE BUTTON -->
     <button
       class="eye-button"
       onclick="togglePassword()"
       aria-label="Show password"
+      type="button"
     ></button>
 
-    <!-- UNLOCK -->
+
+    <!-- UNLOCK BUTTON -->
     <button
       class="unlock-button"
       onclick="checkPassword()"
       aria-label="Unlock"
+      type="button"
     ></button>
 
 
-    <!-- MAGIC EFFECTS -->
-    <div id="magic" class="magic">
+    <!-- MAGIC ANIMATION -->
+    <div
+      id="magic"
+      class="magic"
+    >
 
       <div class="glow"></div>
 
-      <div class="key">🔑</div>
+      <div class="key">
+        🔑
+      </div>
 
-      <div class="star star1">✦</div>
-      <div class="star star2">✧</div>
-      <div class="star star3">✦</div>
-      <div class="star star4">✧</div>
-      <div class="star star5">✦</div>
+      <div class="star star1">
+        ✦
+      </div>
+
+      <div class="star star2">
+        ✧
+      </div>
+
+      <div class="star star3">
+        ✦
+      </div>
+
+      <div class="star star4">
+        ✧
+      </div>
+
+      <div class="star star5">
+        ✦
+      </div>
 
       <div class="flash"></div>
 
@@ -480,15 +541,23 @@
 
   <script>
 
+    /* =========================
+       PASSWORD CHECK
+       ========================= */
+
     function checkPassword() {
 
       const enteredPassword =
         document.getElementById("password").value;
 
-      /*
-        PUT YOUR EXISTING PASSWORD HERE.
 
-        Do NOT send your password to me.
+      /*
+        ==========================================
+        CHANGE ONLY THE TEXT BELOW
+        TO YOUR EXISTING PASSWORD.
+
+        DO NOT SEND YOUR PASSWORD TO ME.
+        ==========================================
       */
 
       const correctPassword = "bandri";
@@ -496,42 +565,68 @@
 
       if (enteredPassword === correctPassword) {
 
-        // Hide the controls
-        document.getElementById("password").style.display = "none";
-        document.querySelector(".unlock-button").style.display = "none";
-        document.querySelector(".eye-button").style.display = "none";
+        /* Hide password controls */
 
-        // Start magic
+        document
+          .getElementById("password")
+          .style.display = "none";
+
+        document
+          .querySelector(".unlock-button")
+          .style.display = "none";
+
+        document
+          .querySelector(".eye-button")
+          .style.display = "none";
+
+
+        /* Start magic */
+
         document
           .getElementById("magic")
-          .classList.add("active");
+          .classList
+          .add("active");
 
-        // Go to Access Granted page
+
+        /* Go to next page */
+
         setTimeout(function() {
 
-          window.location.href = "birthday.html";
+          window.location.href =
+            "birthday.html";
 
         }, 3500);
 
-      } else {
+      }
 
-        alert("Hmm... that's not quite it 💙");
+      else {
+
+        alert(
+          "Hmm... that's not quite it 💙"
+        );
 
       }
 
     }
 
 
+    /* =========================
+       SHOW / HIDE PASSWORD
+       ========================= */
+
     function togglePassword() {
 
       const password =
         document.getElementById("password");
 
+
       if (password.type === "password") {
 
         password.type = "text";
 
-      } else {
+      }
+
+      else {
 
         password.type = "password";
 
@@ -540,19 +635,24 @@
     }
 
 
-    // Pressing Enter also unlocks
+    /* =========================
+       PRESS ENTER TO UNLOCK
+       ========================= */
 
     document
       .getElementById("password")
-      .addEventListener("keydown", function(event) {
+      .addEventListener(
+        "keydown",
+        function(event) {
 
-        if (event.key === "Enter") {
+          if (event.key === "Enter") {
 
-          checkPassword();
+            checkPassword();
+
+          }
 
         }
-
-      });
+      );
 
   </script>
 
