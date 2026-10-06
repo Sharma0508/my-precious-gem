@@ -40,12 +40,8 @@
 
         position: relative;
 
-        transition:
-            background 1.2s ease,
-            opacity 1.2s ease;
+        transition: opacity 1.2s ease;
     }
-
-    /* DREAMY FADE WHEN UNLOCKING */
 
     body.unlocking {
         opacity: 0;
@@ -61,14 +57,10 @@
 
     .star {
         position: absolute;
-
         color: white;
         font-size: 12px;
-
         opacity: 0.7;
-
-        animation:
-            twinkle 3s ease-in-out infinite;
+        animation: twinkle 3s ease-in-out infinite;
     }
 
     .star:nth-child(1) {
@@ -79,7 +71,6 @@
     .star:nth-child(2) {
         top: 20%;
         left: 82%;
-
         font-size: 9px;
         animation-delay: 1s;
     }
@@ -87,7 +78,6 @@
     .star:nth-child(3) {
         top: 34%;
         left: 7%;
-
         font-size: 8px;
         animation-delay: 2s;
     }
@@ -95,7 +85,6 @@
     .star:nth-child(4) {
         top: 14%;
         left: 62%;
-
         font-size: 7px;
         animation-delay: 1.5s;
     }
@@ -103,7 +92,6 @@
     .star:nth-child(5) {
         top: 48%;
         left: 91%;
-
         font-size: 10px;
         animation-delay: 0.5s;
     }
@@ -111,7 +99,6 @@
     .star:nth-child(6) {
         top: 68%;
         left: 10%;
-
         font-size: 9px;
         animation-delay: 2.2s;
     }
@@ -119,7 +106,6 @@
     .star:nth-child(7) {
         top: 73%;
         left: 86%;
-
         font-size: 8px;
         animation-delay: 1.2s;
     }
@@ -127,14 +113,12 @@
     .star:nth-child(8) {
         top: 82%;
         left: 25%;
-
         font-size: 7px;
         animation-delay: 0.8s;
     }
 
     @keyframes twinkle {
-        0%,
-        100% {
+        0%, 100% {
             opacity: 0.3;
             transform: scale(0.8);
         }
@@ -149,7 +133,6 @@
 
     .cloud {
         position: absolute;
-
         width: 150px;
         height: 45px;
 
@@ -159,27 +142,20 @@
 
         opacity: 0.8;
 
-        filter: blur(0.2px);
-
-        animation:
-            floatCloud 28s linear infinite;
+        animation: floatCloud 28s linear infinite;
     }
 
     .cloud::before,
     .cloud::after {
         content: "";
-
         position: absolute;
-
         background: inherit;
-
         border-radius: 50%;
     }
 
     .cloud::before {
         width: 65px;
         height: 65px;
-
         left: 22px;
         bottom: 15px;
     }
@@ -187,7 +163,6 @@
     .cloud::after {
         width: 82px;
         height: 82px;
-
         right: 20px;
         bottom: 10px;
     }
@@ -195,20 +170,15 @@
     .cloud.one {
         top: 12%;
         left: -200px;
-
         transform: scale(0.9);
-
         animation-duration: 28s;
     }
 
     .cloud.two {
         top: 72%;
         left: -220px;
-
         transform: scale(0.65);
-
         opacity: 0.55;
-
         animation-duration: 35s;
         animation-delay: 7s;
     }
@@ -216,11 +186,8 @@
     .cloud.three {
         top: 25%;
         left: -220px;
-
         transform: scale(0.45);
-
         opacity: 0.45;
-
         animation-duration: 40s;
         animation-delay: 13s;
     }
@@ -235,11 +202,10 @@
         }
     }
 
-    /* MAIN */
+    /* MAIN CONTENT */
 
     .page {
         position: relative;
-
         z-index: 5;
 
         width: min(90%, 520px);
@@ -255,22 +221,18 @@
 
     body.unlocking .page {
         transform: scale(1.08);
-
         opacity: 0;
     }
 
     .heart {
         font-size: 42px;
-
         margin-bottom: 18px;
 
-        animation:
-            gentleFloat 3s ease-in-out infinite;
+        animation: gentleFloat 3s ease-in-out infinite;
     }
 
     @keyframes gentleFloat {
-        0%,
-        100% {
+        0%, 100% {
             transform: translateY(0);
         }
 
@@ -306,7 +268,6 @@
 
     .password-box {
         width: min(100%, 380px);
-
         margin: 0 auto;
     }
 
@@ -402,13 +363,11 @@
 
         font-size: 15px;
 
-        animation:
-            shake 0.3s ease;
+        animation: shake 0.3s ease;
     }
 
     @keyframes shake {
-        0%,
-        100% {
+        0%, 100% {
             transform: translateX(0);
         }
 
@@ -427,7 +386,6 @@
 
         .page {
             width: 92%;
-
             padding: 15px;
         }
 
@@ -441,21 +399,17 @@
 
         .message {
             font-size: 17px;
-
             margin-bottom: 25px;
         }
 
         .password {
             height: 55px;
-
             font-size: 17px;
         }
 
         .unlock {
             width: 145px;
-
             height: 50px;
-
             font-size: 17px;
         }
     }
@@ -467,10 +421,7 @@
 <body>
 
 ```
-<!-- STARS -->
-
 <div class="stars">
-
     <span class="star">✦</span>
     <span class="star">✧</span>
     <span class="star">✦</span>
@@ -479,18 +430,11 @@
     <span class="star">✧</span>
     <span class="star">✦</span>
     <span class="star">✧</span>
-
 </div>
-
-
-<!-- CLOUDS -->
 
 <div class="cloud one"></div>
 <div class="cloud two"></div>
 <div class="cloud three"></div>
-
-
-<!-- MAIN CONTENT -->
 
 <main class="page">
 
@@ -506,7 +450,6 @@
     <div class="message">
         Hint: The name you gave me might just unlock it ✨
     </div>
-
 
     <div class="password-box">
 
@@ -538,7 +481,6 @@
 
 </main>
 
-
 <script>
 
     function checkPassword() {
@@ -550,23 +492,12 @@
                 .trim()
                 .toLowerCase();
 
-
         if (password === "bandri") {
-
-            /*
-                Start the dreamy transition.
-            */
 
             document
                 .body
                 .classList
                 .add("unlocking");
-
-
-            /*
-                Give the animation time to
-                finish before opening birthday.html.
-            */
 
             setTimeout(function () {
 
@@ -575,33 +506,26 @@
 
             }, 1200);
 
-
         } else {
 
             const error =
                 document
                     .getElementById("error");
 
-            error.style.display =
-                "block";
-
+            error.style.display = "block";
 
             setTimeout(function () {
 
-                error.style.display =
-                    "none";
+                error.style.display = "none";
 
             }, 2500);
         }
     }
 
-
     function handleEnter(event) {
 
         if (event.key === "Enter") {
-
             checkPassword();
-
         }
     }
 
