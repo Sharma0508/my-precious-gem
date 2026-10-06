@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>For the Sweetest Soul 💐</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+
+
+    body {
+
+      background: #dceeff;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: flex-start;
+
+      font-family: Arial, sans-serif;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =================================
+       PHONE PAGE
+       ================================= */
+
+    .phone-page {
+
+      position: relative;
+
+      width: 100%;
+
+      max-width: 430px;
+
+      margin: 0 auto;
+
+      background: #eef8ff;
+
+      overflow: hidden;
+    }
+
+
+    /* =================================
+       BOUQUET ARTWORK
+       ================================= */
+
+    .page-image {
+
+      display: block;
+
+      width: 100%;
+
+      height: auto;
+
+      margin: 0;
+
+      padding: 0;
+    }
+
+
+    /* =================================
+       CONTINUE BUTTON
+       
+       The actual button is already
+       visible inside the artwork.
+       This invisible button sits
+       over it.
+       ================================= */
+
+    .continue-button {
+
+      position: absolute;
+
+      left: 31%;
+
+      top: 87.5%;
+
+      width: 38%;
+
+      height: 6%;
+
+      border: none;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      padding: 0;
+
+      z-index: 10;
+    }
+
+
+    .continue-button:active {
+
+      transform: scale(0.96);
+    }
+
+
+    /* =================================
+       DESKTOP
+       ================================= */
+
+    @media (min-width: 600px) {
+
+      body {
+
+        padding: 25px 0;
+      }
+
+
+      .phone-page {
+
+        border-radius: 20px;
+
+        box-shadow:
+          0 10px 40px
+          rgba(40, 90, 150, 0.25);
+      }
+
+    }
+
+
+    /* =================================
+       MOBILE
+       ================================= */
+
+    @media (max-width: 599px) {
+
+      body {
+
+        background: #eef8ff;
+
+        padding: 0;
+      }
+
+
+      .phone-page {
+
+        width: 100%;
+
+        max-width: 430px;
+
+        border-radius: 0;
+
+        box-shadow: none;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <div class="phone-page">
+
+
+    <!-- BOUQUET ARTWORK -->
+
+    <img
+      class="page-image"
+      src="bouquet.png"
+      alt="A beautiful bouquet for the sweetest soul"
+    >
+
+
+    <!-- INVISIBLE CONTINUE BUTTON -->
+
+    <button
+      class="continue-button"
+      onclick="continueToNext()"
+      type="button"
+      aria-label="Continue">
+    </button>
+
+
+  </div>
+
+
+  <script>
+
+    function continueToNext() {
+
+      alert("Something even more special is waiting... 💙");
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
