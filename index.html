@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Just For You ❤️</title>
+    <title>Just For You 💙</title>
 
     <style>
         * {
@@ -14,60 +14,154 @@
         body {
             margin: 0;
             min-height: 100vh;
-            background: white;
-            color: #111;
+
             font-family: Arial, sans-serif;
+            color: #12345b;
+
+            background: linear-gradient(
+                135deg,
+                #dff3ff,
+                #b9e3ff,
+                #d9d4ff
+            );
 
             display: flex;
             align-items: center;
             justify-content: center;
+
+            overflow: hidden;
+        }
+
+        /* Decorative circles */
+        body::before {
+            content: "💙  ✨  💙  ✨  💙";
+            position: fixed;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 22px;
+            opacity: 0.8;
+        }
+
+        body::after {
+            content: "✨  💙  ✨  💙  ✨";
+            position: fixed;
+            bottom: 25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 22px;
+            opacity: 0.8;
         }
 
         .page {
-            width: 100%;
+            width: 90%;
             max-width: 420px;
-            padding: 30px;
+
+            background: rgba(255, 255, 255, 0.75);
+
+            padding: 38px 28px;
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 15px 40px rgba(44, 104, 160, 0.20);
+
+            text-align: left;
         }
 
         .heading {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: bold;
-            line-height: 1.25;
-            margin-bottom: 30px;
+            line-height: 1.3;
+
+            margin-bottom: 25px;
         }
 
         .message {
-            font-size: 23px;
+            font-size: 21px;
             line-height: 1.4;
-            margin-bottom: 35px;
+
+            margin-bottom: 30px;
         }
 
         .password {
             width: 100%;
             height: 55px;
+
             border: none;
-            border-bottom: 3px solid #111;
-            background: #f7f7f7;
-            padding: 10px;
-            font-size: 22px;
+            border-bottom: 3px solid #2878c8;
+
+            background: rgba(255, 255, 255, 0.8);
+
+            border-radius: 10px 10px 0 0;
+
+            padding: 10px 14px;
+
+            font-size: 21px;
+
+            color: #12345b;
+
             outline: none;
         }
 
+        .password:focus {
+            border-bottom: 4px solid #1769aa;
+        }
+
         .unlock {
-            margin-top: 18px;
-            padding: 0;
+            margin-top: 20px;
+
+            padding: 13px 24px;
+
             border: none;
-            background: none;
-            font-size: 27px;
+            border-radius: 15px;
+
+            background: #2878c8;
+            color: white;
+
+            font-size: 22px;
             font-weight: bold;
+
             cursor: pointer;
+
+            box-shadow: 0 6px 15px rgba(40, 120, 200, 0.3);
+
+            transition: 0.2s;
+        }
+
+        .unlock:active {
+            transform: scale(0.96);
         }
 
         .error {
             display: none;
+
             margin-top: 18px;
-            color: #e63946;
-            font-size: 17px;
+
+            color: #d62828;
+
+            font-size: 16px;
+        }
+
+        @media (max-width: 500px) {
+
+            .page {
+                padding: 32px 24px;
+            }
+
+            .heading {
+                font-size: 28px;
+            }
+
+            .message {
+                font-size: 20px;
+            }
+
+            .unlock {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -77,8 +171,8 @@
     <div class="page">
 
         <div class="heading">
-            🔐 This little corner of the internet<br>
-            is just for you.
+            🔐 This little corner of the internet
+            is just for you. 💙
         </div>
 
         <div class="message">
@@ -89,6 +183,7 @@
             type="password"
             id="password"
             class="password"
+            placeholder="Secret word..."
         >
 
         <button class="unlock" onclick="checkPassword()">
@@ -104,7 +199,8 @@
     <script>
         function checkPassword() {
 
-            const password = document.getElementById("password").value;
+            const password =
+                document.getElementById("password").value;
 
             if (password === "1234") {
 
