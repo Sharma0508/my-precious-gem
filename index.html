@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,156 +12,376 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
             margin: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
             min-height: 100vh;
+            overflow: hidden;
 
-            font-family: Arial, sans-serif;
-            color: #12345b;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #ffffff;
 
-            background: linear-gradient(
-                135deg,
-                #dff3ff,
-                #b9e3ff,
-                #d9d4ff
-            );
+            background:
+                linear-gradient(
+                    180deg,
+                    #69b7ed 0%,
+                    #8ccdf2 48%,
+                    #b9e4fa 100%
+                );
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            overflow: hidden;
+            position: relative;
         }
 
-        /* Decorative circles */
-        body::before {
-            content: "💙  ✨  💙  ✨  💙";
-            position: fixed;
-            top: 25px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 22px;
-            opacity: 0.8;
+        /* ---------------- STARS ---------------- */
+
+        .stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
         }
 
-        body::after {
-            content: "✨  💙  ✨  💙  ✨";
-            position: fixed;
-            bottom: 25px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 22px;
-            opacity: 0.8;
+        .star {
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            opacity: 0.75;
+            animation: twinkle 3s ease-in-out infinite;
         }
+
+        .star:nth-child(1) {
+            top: 12%;
+            left: 12%;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            top: 20%;
+            left: 82%;
+            font-size: 9px;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(3) {
+            top: 34%;
+            left: 7%;
+            font-size: 8px;
+            animation-delay: 2s;
+        }
+
+        .star:nth-child(4) {
+            top: 14%;
+            left: 62%;
+            font-size: 7px;
+            animation-delay: 1.5s;
+        }
+
+        .star:nth-child(5) {
+            top: 48%;
+            left: 91%;
+            font-size: 10px;
+            animation-delay: 0.5s;
+        }
+
+        .star:nth-child(6) {
+            top: 68%;
+            left: 10%;
+            font-size: 9px;
+            animation-delay: 2.2s;
+        }
+
+        .star:nth-child(7) {
+            top: 73%;
+            left: 86%;
+            font-size: 8px;
+            animation-delay: 1.2s;
+        }
+
+        .star:nth-child(8) {
+            top: 82%;
+            left: 25%;
+            font-size: 7px;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.35;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.25);
+            }
+        }
+
+        /* ---------------- CLOUDS ---------------- */
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 100px;
+            width: 150px;
+            height: 45px;
+            opacity: 0.8;
+            filter: blur(0.2px);
+            animation: floatCloud 22s linear infinite;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: "";
+            position: absolute;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .cloud::before {
+            width: 65px;
+            height: 65px;
+            left: 22px;
+            bottom: 15px;
+        }
+
+        .cloud::after {
+            width: 82px;
+            height: 82px;
+            right: 20px;
+            bottom: 10px;
+        }
+
+        .cloud.one {
+            top: 12%;
+            left: -170px;
+            transform: scale(0.9);
+            animation-duration: 28s;
+        }
+
+        .cloud.two {
+            top: 72%;
+            left: -200px;
+            transform: scale(0.65);
+            opacity: 0.55;
+            animation-duration: 35s;
+            animation-delay: 7s;
+        }
+
+        .cloud.three {
+            top: 25%;
+            left: -190px;
+            transform: scale(0.45);
+            opacity: 0.45;
+            animation-duration: 40s;
+            animation-delay: 13s;
+        }
+
+        @keyframes floatCloud {
+            from {
+                left: -220px;
+            }
+
+            to {
+                left: calc(100% + 220px);
+            }
+        }
+
+        /* ---------------- MAIN CONTENT ---------------- */
 
         .page {
-            width: 90%;
-            max-width: 420px;
+            position: relative;
+            z-index: 5;
 
-            background: rgba(255, 255, 255, 0.75);
+            width: min(90%, 520px);
 
-            padding: 38px 28px;
+            text-align: center;
 
-            border-radius: 28px;
+            padding: 20px;
+        }
 
-            box-shadow:
-                0 15px 40px rgba(44, 104, 160, 0.20);
+        .heart {
+            font-size: 42px;
+            margin-bottom: 18px;
 
-            text-align: left;
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-7px);
+            }
         }
 
         .heading {
-            font-size: 30px;
+            font-size: clamp(28px, 5vw, 42px);
             font-weight: bold;
-            line-height: 1.3;
+            line-height: 1.2;
 
-            margin-bottom: 25px;
+            text-shadow:
+                0 3px 12px rgba(35, 92, 140, 0.25);
+
+            margin-bottom: 18px;
         }
 
         .message {
-            font-size: 21px;
-            line-height: 1.4;
+            font-size: clamp(17px, 3vw, 21px);
+            line-height: 1.5;
+
+            color: rgba(255, 255, 255, 0.95);
 
             margin-bottom: 30px;
         }
 
+        /* ---------------- PASSWORD ---------------- */
+
+        .password-box {
+            width: min(100%, 380px);
+            margin: 0 auto;
+        }
+
         .password {
             width: 100%;
-            height: 55px;
+            height: 58px;
 
-            border: none;
-            border-bottom: 3px solid #2878c8;
+            border: 2px solid rgba(255, 255, 255, 0.75);
+            border-radius: 18px;
 
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.25);
 
-            border-radius: 10px 10px 0 0;
+            backdrop-filter: blur(8px);
 
-            padding: 10px 14px;
+            padding: 0 18px;
 
-            font-size: 21px;
+            font-size: 18px;
+            font-family: inherit;
 
-            color: #12345b;
+            color: white;
 
             outline: none;
+
+            text-align: center;
+
+            transition: 0.25s;
+        }
+
+        .password::placeholder {
+            color: rgba(255, 255, 255, 0.85);
         }
 
         .password:focus {
-            border-bottom: 4px solid #1769aa;
+            background: rgba(255, 255, 255, 0.35);
+            border-color: white;
+
+            box-shadow:
+                0 0 20px rgba(255, 255, 255, 0.25);
         }
 
         .unlock {
-            margin-top: 20px;
+            margin-top: 16px;
 
-            padding: 13px 24px;
+            min-width: 150px;
+            height: 52px;
 
             border: none;
-            border-radius: 15px;
+            border-radius: 18px;
 
-            background: #2878c8;
-            color: white;
+            background: rgba(255, 255, 255, 0.92);
 
-            font-size: 22px;
+            color: #397fb1;
+
+            font-family: inherit;
+            font-size: 18px;
             font-weight: bold;
 
             cursor: pointer;
 
-            box-shadow: 0 6px 15px rgba(40, 120, 200, 0.3);
+            box-shadow:
+                0 8px 20px rgba(38, 103, 151, 0.2);
 
             transition: 0.2s;
+        }
+
+        .unlock:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(38, 103, 151, 0.25);
         }
 
         .unlock:active {
             transform: scale(0.96);
         }
 
+        /* ---------------- ERROR ---------------- */
+
         .error {
             display: none;
 
-            margin-top: 18px;
+            margin-top: 15px;
 
-            color: #d62828;
+            color: #ffffff;
 
-            font-size: 16px;
+            font-size: 15px;
+
+            animation: shake 0.3s ease;
         }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        /* ---------------- PHONE ---------------- */
 
         @media (max-width: 500px) {
 
             .page {
-                padding: 32px 24px;
+                width: 92%;
+                padding: 15px;
+            }
+
+            .heart {
+                font-size: 35px;
             }
 
             .heading {
-                font-size: 28px;
+                font-size: 29px;
             }
 
             .message {
-                font-size: 20px;
+                font-size: 17px;
+                margin-bottom: 25px;
+            }
+
+            .password {
+                height: 55px;
+                font-size: 17px;
             }
 
             .unlock {
-                font-size: 20px;
+                width: 145px;
+                height: 50px;
+                font-size: 17px;
             }
         }
     </style>
@@ -168,39 +389,67 @@
 
 <body>
 
-    <div class="page">
+    <!-- Little stars -->
+    <div class="stars">
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+    </div>
+
+    <!-- Floating clouds -->
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
+    <div class="cloud three"></div>
+
+
+    <main class="page">
+
+        <div class="heart">💙</div>
 
         <div class="heading">
-            🔐 This little corner of the internet
-            is just for you. 💙
+            This little corner of the internet
+            is just for you.
         </div>
 
         <div class="message">
-            Enter the secret word to continue:
+            Hint: The name you gave me might just unlock it ✨
         </div>
 
-        <input
-            type="password"
-            id="password"
-            class="password"
-            placeholder="Secret word..."
-        >
+        <div class="password-box">
 
-        <button class="unlock" onclick="checkPassword()">
-            Unlock ❤️
-        </button>
+            <input
+                type="password"
+                id="password"
+                class="password"
+                placeholder="Enter the secret word..."
+                autocomplete="off"
+                onkeydown="handleEnter(event)"
+            >
 
-        <div id="error" class="error">
-            That's not the secret word 😝
+            <button class="unlock" onclick="checkPassword()">
+                Unlock 💙
+            </button>
+
+            <div id="error" class="error">
+                Hmm... that's not quite it. Try again 💙
+            </div>
+
         </div>
 
-    </div>
+    </main>
+
 
     <script>
+
         function checkPassword() {
 
             const password =
-                document.getElementById("password").value;
+                document.getElementById("password").value.trim();
 
             if (password === "bandri") {
 
@@ -208,11 +457,28 @@
 
             } else {
 
-                document.getElementById("error").style.display = "block";
+                const error =
+                    document.getElementById("error");
 
+                error.style.display = "block";
+
+                setTimeout(() => {
+                    error.style.display = "none";
+                }, 2500);
             }
         }
+
+
+        function handleEnter(event) {
+
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+
+        }
+
     </script>
 
 </body>
 </html>
+```
