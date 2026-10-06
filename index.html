@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Just For You ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: white;
+            color: #111;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+        }
+
+        .heading {
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 1.25;
+            margin-bottom: 30px;
+        }
+
+        .message {
+            font-size: 23px;
+            line-height: 1.4;
+            margin-bottom: 35px;
+        }
+
+        .password {
+            width: 100%;
+            height: 55px;
+            border: none;
+            border-bottom: 3px solid #111;
+            background: #f7f7f7;
+            padding: 10px;
+            font-size: 22px;
+            outline: none;
+        }
+
+        .unlock {
+            margin-top: 18px;
+            padding: 0;
+            border: none;
+            background: none;
+            font-size: 27px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .error {
+            display: none;
+            margin-top: 18px;
+            color: #e63946;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="heading">
+            🔐 This little corner of the internet<br>
+            is just for you.
+        </div>
+
+        <div class="message">
+            Enter the secret word to continue:
+        </div>
+
+        <input
+            type="password"
+            id="password"
+            class="password"
+        >
+
+        <button class="unlock" onclick="checkPassword()">
+            Unlock ❤️
+        </button>
+
+        <div id="error" class="error">
+            That's not the secret word 😝
+        </div>
+
+    </div>
+
+    <script>
+        function checkPassword() {
+
+            const password = document.getElementById("password").value;
+
+            if (password === "1234") {
+
+                alert("Correct! ❤️");
+
+            } else {
+
+                document.getElementById("error").style.display = "block";
+
+            }
+        }
+    </script>
+
+</body>
+</html>
