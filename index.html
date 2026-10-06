@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -9,11 +12,13 @@
 
   <title>A Little Secret 💙</title>
 
+
   <style>
 
     * {
       box-sizing: border-box;
     }
+
 
     html,
     body {
@@ -23,30 +28,40 @@
       min-height: 100%;
     }
 
+
     body {
+
       background: #dceeff;
+
       display: flex;
+
       justify-content: center;
+
       align-items: flex-start;
+
       overflow-x: hidden;
+
       font-family: Arial, sans-serif;
     }
 
 
     /* =================================
-       IMAGE CONTAINER
+       MAIN PAGE
        ================================= */
 
     .page {
+
       position: relative;
 
       width: 100%;
+
       max-width: 430px;
 
       /*
         Your image is 1024 x 1536.
-        Therefore the ratio is 2 : 3.
+        This keeps the exact same shape.
       */
+
       aspect-ratio: 2 / 3;
 
       margin: 0 auto;
@@ -58,15 +73,17 @@
 
 
     /* =================================
-       BACKGROUND IMAGE
+       YOUR ORIGINAL IMAGE
        ================================= */
 
     .page-image {
+
       position: absolute;
 
       inset: 0;
 
       width: 100%;
+
       height: 100%;
 
       display: block;
@@ -76,39 +93,35 @@
 
 
     /* =================================
-       PASSWORD INPUT
+       INVISIBLE PASSWORD INPUT
+       
+       The artwork already contains:
+       🔒 password box
+       "Enter password..."
+       👁 eye
+       
+       We are NOT creating another box.
        ================================= */
 
     .password-input {
 
       position: absolute;
 
-      /*
-        Position is now based ONLY on
-        the artwork itself.
-      */
+      left: 20%;
 
-      left: 17%;
-      top: 63.0%;
+      top: 62.7%;
 
-      width: 66%;
-      height: 5.7%;
+      width: 57%;
 
+      height: 7%;
 
       border: none;
+
       outline: none;
 
-      /*
-        Slightly opaque background hides
-        the "Enter password..." text
-        printed inside the image.
-      */
+      background: transparent;
 
-      background: rgba(238, 248, 255, 0.92);
-
-      border-radius: 30px;
-
-      padding: 0 50px 0 48px;
+      padding: 0 5px;
 
       font-size: 17px;
 
@@ -121,30 +134,38 @@
       cursor: text;
 
       -webkit-appearance: none;
+
+      appearance: none;
     }
 
 
-    .password-input::placeholder {
-      color: #78a8df;
-      opacity: 1;
-    }
+    /*
+      IMPORTANT:
+      No placeholder here.
+
+      The words "Enter password..."
+      come from your artwork itself.
+    */
 
 
     /* =================================
-       EYE BUTTON
+       INVISIBLE EYE BUTTON
        ================================= */
 
     .eye-button {
 
       position: absolute;
 
-      right: 17.5%;
-      top: 63.0%;
+      right: 16%;
 
-      width: 9%;
-      height: 5.7%;
+      top: 62.7%;
+
+      width: 10%;
+
+      height: 7%;
 
       border: none;
+
       outline: none;
 
       background: transparent;
@@ -158,7 +179,7 @@
 
 
     /* =================================
-       UNLOCK BUTTON
+       INVISIBLE UNLOCK BUTTON
        ================================= */
 
     .unlock-button {
@@ -166,12 +187,15 @@
       position: absolute;
 
       left: 25%;
-      top: 72.8%;
+
+      top: 72.5%;
 
       width: 50%;
-      height: 8.2%;
+
+      height: 8.5%;
 
       border: none;
+
       outline: none;
 
       background: transparent;
@@ -185,6 +209,7 @@
 
 
     .unlock-button:active {
+
       transform: scale(0.96);
     }
 
@@ -208,7 +233,7 @@
 
 
     /* =================================
-       GLOW
+       DOOR GLOW
        ================================= */
 
     .glow {
@@ -216,9 +241,10 @@
       position: absolute;
 
       left: 50%;
-      top: 28%;
 
-      width: 45%;
+      top: 19%;
+
+      width: 48%;
 
       aspect-ratio: 1;
 
@@ -232,8 +258,8 @@
         radial-gradient(
           circle,
           rgba(255, 250, 200, 0.95) 0%,
-          rgba(255, 231, 130, 0.55) 30%,
-          rgba(255, 255, 255, 0) 70%
+          rgba(255, 231, 130, 0.60) 30%,
+          rgba(255, 255, 255, 0) 72%
         );
 
       filter: blur(8px);
@@ -261,33 +287,37 @@
 
 
     .star1 {
-      left: 25%;
-      top: 27%;
+      left: 24%;
+      top: 24%;
     }
+
 
     .star2 {
-      left: 68%;
-      top: 26%;
+      left: 70%;
+      top: 23%;
     }
+
 
     .star3 {
-      left: 30%;
-      top: 37%;
+      left: 28%;
+      top: 33%;
     }
 
+
     .star4 {
-      left: 70%;
-      top: 38%;
+      left: 72%;
+      top: 34%;
     }
+
 
     .star5 {
       left: 50%;
-      top: 21%;
+      top: 17%;
     }
 
 
     /* =================================
-       KEY
+       MAGIC KEY
        ================================= */
 
     .key {
@@ -295,7 +325,8 @@
       position: absolute;
 
       left: 50%;
-      top: 28%;
+
+      top: 38%;
 
       font-size: 50px;
 
@@ -316,7 +347,7 @@
 
 
     /* =================================
-       FLASH
+       WHITE FLASH
        ================================= */
 
     .flash {
@@ -334,10 +365,11 @@
 
 
     /* =================================
-       ANIMATION START
+       START MAGIC
        ================================= */
 
     .magic.active {
+
       opacity: 1;
     }
 
@@ -376,17 +408,21 @@
       animation-delay: 1.5s;
     }
 
+
     .magic.active .star2 {
       animation-delay: 1.7s;
     }
+
 
     .magic.active .star3 {
       animation-delay: 1.4s;
     }
 
+
     .magic.active .star4 {
       animation-delay: 1.8s;
     }
+
 
     .magic.active .star5 {
       animation-delay: 1.6s;
@@ -419,6 +455,7 @@
         opacity: 0;
       }
 
+
       60% {
 
         transform:
@@ -427,6 +464,7 @@
 
         opacity: 1;
       }
+
 
       100% {
 
@@ -445,9 +483,12 @@
 
     @keyframes keyMove {
 
+      /* Key appears */
+
       0% {
 
         left: 50%;
+
         top: 38%;
 
         opacity: 0;
@@ -458,25 +499,39 @@
           scale(0.5);
       }
 
-      20% {
+
+      /* Key becomes visible */
+
+      15% {
+
         opacity: 1;
       }
 
-      65% {
+
+      /* Key moves toward door */
+
+      55% {
 
         left: 50%;
-        top: 28%;
+
+        top: 19%;
+
+        opacity: 1;
 
         transform:
           translate(-50%, -50%)
-          rotate(5deg)
+          rotate(10deg)
           scale(1);
       }
 
-      78% {
+
+      /* Key turns */
+
+      68% {
 
         left: 50%;
-        top: 28%;
+
+        top: 19%;
 
         transform:
           translate(-50%, -50%)
@@ -484,28 +539,36 @@
           scale(1);
       }
 
-      88% {
+
+      /* Small return turn */
+
+      78% {
 
         left: 50%;
-        top: 28%;
+
+        top: 19%;
 
         transform:
           translate(-50%, -50%)
-          rotate(70deg)
+          rotate(65deg)
           scale(1.05);
       }
+
+
+      /* Key disappears */
 
       100% {
 
         left: 50%;
-        top: 28%;
+
+        top: 19%;
 
         opacity: 0;
 
         transform:
           translate(-50%, -50%)
-          rotate(70deg)
-          scale(0.8);
+          rotate(65deg)
+          scale(0.7);
       }
     }
 
@@ -523,12 +586,14 @@
         transform: scale(0.3);
       }
 
+
       30% {
 
         opacity: 1;
 
         transform: scale(1.2);
       }
+
 
       100% {
 
@@ -551,9 +616,11 @@
         opacity: 0;
       }
 
+
       50% {
         opacity: 0.9;
       }
+
 
       100% {
         opacity: 0;
@@ -568,8 +635,10 @@
     @media (min-width: 600px) {
 
       body {
+
         padding: 25px 0;
       }
+
 
       .page {
 
@@ -595,6 +664,7 @@
         padding: 0;
       }
 
+
       .page {
 
         width: 100%;
@@ -608,6 +678,7 @@
     }
 
   </style>
+
 </head>
 
 
@@ -617,9 +688,7 @@
   <div class="page">
 
 
-    <!-- =================================
-         YOUR IMAGE
-         ================================= -->
+    <!-- ORIGINAL ARTWORK -->
 
     <img
       class="page-image"
@@ -628,23 +697,18 @@
     >
 
 
-    <!-- =================================
-         PASSWORD
-         ================================= -->
+    <!-- INVISIBLE PASSWORD INPUT -->
 
     <input
       id="password"
       class="password-input"
       type="password"
-      placeholder="Enter password..."
       autocomplete="off"
       aria-label="Enter password"
     >
 
 
-    <!-- =================================
-         EYE
-         ================================= -->
+    <!-- INVISIBLE EYE BUTTON -->
 
     <button
       class="eye-button"
@@ -654,9 +718,7 @@
     ></button>
 
 
-    <!-- =================================
-         UNLOCK
-         ================================= -->
+    <!-- INVISIBLE UNLOCK BUTTON -->
 
     <button
       class="unlock-button"
@@ -666,9 +728,7 @@
     ></button>
 
 
-    <!-- =================================
-         MAGIC
-         ================================= -->
+    <!-- MAGIC -->
 
     <div
       id="magic"
@@ -677,29 +737,36 @@
 
       <div class="glow"></div>
 
+
       <div class="key">
         🔑
       </div>
+
 
       <div class="star star1">
         ✦
       </div>
 
+
       <div class="star star2">
         ✧
       </div>
+
 
       <div class="star star3">
         ✦
       </div>
 
+
       <div class="star star4">
         ✧
       </div>
 
+
       <div class="star star5">
         ✦
       </div>
+
 
       <div class="flash"></div>
 
@@ -723,11 +790,13 @@
 
 
       /*
-       * ==================================
-       * CHANGE ONLY THIS PASSWORD
+       * =================================
+       * CHANGE ONLY THIS
+       *
+       * PUT YOUR EXISTING PASSWORD HERE.
        *
        * DO NOT SEND IT TO ME.
-       * ==================================
+       * =================================
        */
 
       const correctPassword =
@@ -768,7 +837,7 @@
           .add("active");
 
 
-        /* Go to next page */
+        /* Open Access Granted page */
 
         setTimeout(
           function() {
@@ -842,8 +911,9 @@
         }
       );
 
-
   </script>
 
+
 </body>
+
 </html>
