@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>To My Dearest Vitamin D ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+    }
+
+    body {
+        background: #eef8ff;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow-x: hidden;
+    }
+
+    .phone-page {
+        position: relative;
+        width: 100%;
+        max-width: 430px;
+        min-height: 100vh;
+        overflow: hidden;
+        background: #eef8ff;
+    }
+
+    .page-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Invisible Continue button */
+    .continue-button {
+        position: absolute;
+        left: 35%;
+        top: 91%;
+        width: 30%;
+        height: 6%;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .continue-button:focus {
+        outline: none;
+    }
+
+    @media (max-width: 599px) {
+        .phone-page {
+            width: 100%;
+            max-width: 430px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="phone-page">
+
+    <img
+        src="letter.png"
+        class="page-image"
+        alt="A birthday letter to my dearest Vitamin D"
+    >
+
+    <button
+        class="continue-button"
+        onclick="continueToNext()"
+        aria-label="Continue">
+    </button>
+
+</div>
+
+<script>
+    function continueToNext() {
+        window.location.href = "next.html";
+    }
+</script>
+
+</body>
+</html>
